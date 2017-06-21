@@ -1,0 +1,37 @@
+* {
+	font-family: 'Quicksand', sans-serif;
+}
+
+#link {
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+#secondbutton {
+	margin-top: 15px;
+}
+
+#logo {
+	width: 100%;
+}
+
+.submitbutton {
+	background-color: #003975;
+	color: white;
+	border: 1px solid grey;
+	border-radius: 3px;
+}
+
+.dropdownbutton {
+	background-color: #01B7F1;
+	border: 1px solid grey;
+	border-radius: 3px;
+
+}
+
+#footer {
+	background-color: #E3E3E3;
+	padding-top: 40px;
+	padding-bottom: 30px;
+}
+
