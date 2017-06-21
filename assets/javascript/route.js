@@ -18,7 +18,43 @@
   var StrokeColorArray = ['#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116'];
 
  // Link to flightawre site
-  var fxml_url = 'http://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
+  var fxml_url = 'https://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
+
+/******* Firebase ***************************************************/
+
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAHgsPmMGCsVEgrimgvdy3Fdghhf9Eloeo",
+    authDomain: "group-project-gt.firebaseapp.com",
+    databaseURL: "https://group-project-gt.firebaseio.com",
+    projectId: "group-project-gt",
+    storageBucket: "group-project-gt.appspot.com",
+    messagingSenderId: "624105688641"
+  };
+  firebase.initializeApp(config);
+ 
+  function findLocations() {
+
+  locations.ref().on("value", function(snapshot,prevChildKey) {
+    console.log(snapshot.val())
+      // Store everything into a variable.
+    
+    for(var i = 0 ; i < snapshot.numChildren() ; i++){
+      var attraction = snapshot.val().attraction;
+      var ptlt = snapshot.val().latitude;
+      var ptln = snapshot.val().longtude;
+      var city = snapshot.val().city;
+      var Key = snapshot.key; // Grabs the Key   
+      console.log(snapshot.numChildren()); 
+    }
+    // Print the local data to the console.
+
+    // If any errors are experienced, log them to console.
+}, function(errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
+}
+//findLocations();
 
 
 
@@ -222,15 +258,7 @@
 
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
-    // Location 1 to search
-    //console.log('>>>>>>>>> ' + lastLati);
-   /* service.nearbySearch({
-    location: lastPoint, // replace with firstPoint
-    radius: 500,
-    type: ['(landmarks)'],
-    animation: google.maps.Animation.DROP
-    }, callback); */
-    // Location 2 to search
+
     service.nearbySearch({
       location: {lat:26.150 , lng: -80.153}, // replace with lastPoint
       radius: 500,
