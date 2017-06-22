@@ -2,6 +2,10 @@
 	font-family: 'Quicksand', sans-serif;
 }
 
+h3 {
+	margin-top: 0px;
+}
+
 #link {
   margin-right: 30px;
   margin-bottom: 30px;
@@ -35,3 +39,37 @@
 	padding-bottom: 30px;
 }
 
+.tricksimage {
+	border-radius: 500px;
+	margin-left: 30px;
+	margin-right: 0px;
+	margin-top: 20px;
+	padding-right: 0px;
+}
+
+.row {
+	margin-bottom: 30px;
+}
+
+
+@media (max-width: 575px) {}
+
+
+@media (min-width: 576px) and (max-width: 767px) {}
+
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.tricksimage {
+		width: 90%;
+	}
+}
+
+
+@media (min-width: 1200px) {
+	.tricksimage {
+		width: 90%;
+	}
+}
