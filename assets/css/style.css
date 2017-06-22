@@ -51,6 +51,70 @@ h3 {
 	margin-bottom: 30px;
 }
 
+.teampic {
+	width: 200px;
+	height: 200px;
+	border-radius: 500px;
+	margin-top: 40px;
+}
+
+.teampic:hover {
+    background-image: url('assets/images/florian.jpg');
+}
+
+#map {
+	margin-left: 120px;
+	margin-right: 120px;
+}
+
+#mail {
+	margin-bottom: 50px;
+}
+
+.jumbotron p {
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+h2 {
+	padding-top: 70px;
+}
+
+.navbar-default {
+	margin-bottom: 0px;
+}
+
+li {
+     cursor: pointer;
+     cursor: hand;
+   }
+
+.img-responsive {  
+margin-bottom: 30px;    
+-webkit-transition: all 0.35s ease-in-out;    
+-moz-transition: all 0.35s ease-in-out;    
+transition: all 0.35s ease-in-out;     
+cursor: -webkit-zoom-in;      
+cursor: -moz-zoom-in;      
+cursor: zoom-in;  
+}     
+
+.portfolio-item:hover,  
+.portfolio-item:active,   
+.portfolio-item:focus {
+
+
+-ms-transform: scale(2.5);    
+-moz-transform: scale(2.5);  
+-webkit-transform: scale(2.5);  
+-o-transform: scale(2.5);  
+transform: scale(2.5);    
+position:relative;      
+z-index:100;  
+}
+
+.DivName {cursor: pointer}
+}
 
 @media (max-width: 575px) {}
 
