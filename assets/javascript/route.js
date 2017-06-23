@@ -20,9 +20,11 @@
  // Link to flightawre site
   var fxml_url = 'https://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
 
+
+
 /******* Firebase ***************************************************/
 
-// Initialize Firebase
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAHgsPmMGCsVEgrimgvdy3Fdghhf9Eloeo",
     authDomain: "group-project-gt.firebaseapp.com",
@@ -32,29 +34,30 @@
     messagingSenderId: "624105688641"
   };
   firebase.initializeApp(config);
+
+  var locations = firebase.database();
  
-  function findLocations() {
+    locations.ref().on("value", function(snapshot) {
+      console.log(snapshot.val());
+    }, function (error) {
+       console.log("Error: " + error.code);
+    });
 
-  locations.ref().on("value", function(snapshot,prevChildKey) {
-    console.log(snapshot.val())
+    locations .ref().on("child_added", function(childSnapshot, prevChildKey) {
       // Store everything into a variable.
-    
-    for(var i = 0 ; i < snapshot.numChildren() ; i++){
-      var attraction = snapshot.val().attraction;
-      var ptlt = snapshot.val().latitude;
-      var ptln = snapshot.val().longtude;
-      var city = snapshot.val().city;
-      var Key = snapshot.key; // Grabs the Key   
-      console.log(snapshot.numChildren()); 
-    }
-    // Print the local data to the console.
+      var name = childSnapshot.val().attraction;
+      var destination = childSnapshot.val().city;
+      var start = childSnapshot.val().latitude;
+      var frequency = childSnapshot.val().longitude;
+      var Key = childSnapshot.key; // Grabs the Key
+      console.log(name);
+    });
 
-    // If any errors are experienced, log them to console.
-}, function(errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
-}
-//findLocations();
+  //};
+
+
+
+
 
 // Travis
 
@@ -102,18 +105,6 @@ var markerLocations = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /******* Find the flight route locations ****************************/  
 
   //Find flight route for a specific flight and copy them into the array
@@ -124,7 +115,7 @@ var markerLocations = [
       data: { 'faFlightID': flight_id },
       success : function(result) {
         if (result.error) {
-          alert('Failed to decode route: ' + result.error);
+          console.log('Failed to decode route: ' + result.error);
           return;
         }  
         console.log("flight Route : " + result.DecodeFlightRouteResult);          
@@ -145,7 +136,7 @@ var markerLocations = [
 
         initMap();
       },
-      error: function(data, text) { alert('Failed to decode route: ' + data); },
+      error: function(data, text) { console.log('Failed to decode route: ' + data); },
       dataType: 'jsonp',
       jsonp: 'jsonp_callback',
       //xhrFields: { withCredentials: true }
@@ -160,7 +151,7 @@ var markerLocations = [
       data: { 'ident': $('#ident_text').val(), 'howMany': 10, 'offset': 0 },
       success : function(result) {
         if (result.error) {
-            alert('Failed to fetch flight: ' + result.error);
+            console.log('Failed to fetch flight: ' + result.error);
             return;
         }
         //add flight depature and destination places
@@ -177,9 +168,9 @@ var markerLocations = [
           }              
         }            
         return;
-        alert('Did not find any useful flights');
+        console.log('Did not find any useful flights');
       },
-      error: function(data, text) { alert('Failed to fetch flight: ' + data); },
+      error: function(data, text) { console.log('Failed to fetch flight: ' + data); },
       dataType: 'jsonp',
       jsonp: 'jsonp_callback',
       xhrFields: { withCredentials: true }
@@ -194,7 +185,7 @@ var markerLocations = [
     data: { 'ident': $('#ident_text').val(), 'howMany': 10, 'offset': 0 },
     success : function(result) {
       if (result.error) {
-          alert('Failed to fetch flight: ' + result.error);
+          console.log('Failed to fetch flight: ' + result.error);
           return;
       }
       console.log(result);
@@ -214,7 +205,7 @@ var markerLocations = [
       } 
       return;
       },
-      error: function(data, text) { alert('Failed to fetch flight: ' + data); },
+      error: function(data, text) { console.log('Failed to fetch flight: ' + data); },
       dataType: 'jsonp',
       jsonp: 'jsonp_callback',
       xhrFields: { withCredentials: true }
@@ -247,23 +238,6 @@ var markerLocations = [
 
     flightPath.setMap(map);
 
-/****************************** Travis ******************************************/
-/*
-   for( i = 0; i < markers.length; i++ ) {
-      var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
-      bounds.extend(position);
-      marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          title: markers[i][0],
-          icon: {
-            url: "assets/images/test.png",
-            scaledSize: new google.maps.Size(64, 64)
-          },
-          visible: false
-      });
-
-*/
 
 /******* Find cities close to the the route ****************************/  
 
@@ -281,15 +255,14 @@ var markerLocations = [
     // Location 1 to search
     //console.log('>>>>>>>>> ' + lastLati);
 
-
+/*
      for( i = 0; i < markerLocations.length; i++ ) {
-        var latitu = {lat:  markerLocations[i][1] , lng: markerLocations[i][2] };
-
+        var latitu = {lat:  markerLocations[i][1] , lng: markerLocations[i][2] }; // Working dont change
         service.nearbySearch({
-        location: latitu, //{lat:26.150 , lng: -80.153}, // replace with firstPoint
+        location: latitu, //{lat:26.150 , lng: -80.153}, 
         //location: {lat:26.150 , lng: -80.153},
         radius: 500,
-        type: ['stadium','landmarks'],
+        //type: ['stadium','cities'],
         animation: google.maps.Animation.DROP
         }, callback); 
       }
@@ -308,25 +281,23 @@ var markerLocations = [
       var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
-        icon: {
-          url: "assets/image/test.png",
-          scaledSize : new google.maps.Size(64,64)
-        }
+        //icon: {
+        //  url: "assets/images/test.png",
+        //  scaledSize : new google.maps.Size(64,64)
+        //}
       });
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
       });
-    }; 
+    }; */
 
-
-  };
+  }; 
 
 
   $('#go_button').on ("click", function() {
     // clearData();
     ExtractDataFromFlightAware(); //find flight number
-    console.log("something");
   });
 
   $("#submitdd").on("click",function(){
