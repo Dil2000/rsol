@@ -37,14 +37,13 @@ function showMarkers() {
 
 
 
-  //===========================================================
-  var markerHolderArray = [];
-
-
   // Variable to hold the bounds to call later
   var bounds = new google.maps.LatLngBounds();
 
-  //========An array for marker locations==================================================
+  //========An array for marker locations and empty array holder==================================================
+  var markerHolderArray = [];
+
+
   var markerLocations = [
     ["Capitol building", 33.749,-84.388111, "Atlanta", 0],
     ["Georiga Dome", 33.757707,-84.400835, "Atlanta", 1],
@@ -416,7 +415,7 @@ function showMarkers() {
 
   //===============================================================================================================
       $("#myForm").on("submit", function(event){
-            showMarkers();
+            //showMarkers();
             //console.log("Holder Array: "+markerHolderArray[i]);
             // Have to have event.preventDeefault or form will not work!
              event.preventDefault();
