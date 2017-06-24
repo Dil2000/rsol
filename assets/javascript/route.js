@@ -168,7 +168,6 @@
 
 /****************************************************************************************
                                   Google initMap()
-
 *****************************************************************************************/     
 
   function initMap() {
@@ -300,8 +299,35 @@
     // End submitdd button=======================
     });
 
-    $("#reset").on("click",function(){
-      window.location.reload();
+    $("#getMarkers").on("click",function(){
+      //window.location.reload();
+                  if (  $( "#OptionDestination" ).val() == "Atlanta, GA" ) {
+                //IAHtoJAXPath.setMap(map);
+
+                deleteMarkers();
+                for( var i = 0; i < markerLocations.length; i++ ){
+                    if ( markerLocations[i].indexOf( "San Francisco" ) != -1 ) {
+                        var city = i;
+                        var position = new google.maps.LatLng(markerLocations[city][1], markerLocations[city][2]);
+                        //bounds.extend(position);
+                        marker = new google.maps.Marker({
+                                position: position,
+                                map: map,
+                                title: markerLocations[i][0],
+                                visible: true,
+                                icon: {
+                                    url: "assets/images/test.png",
+                                    scaledSize: new google.maps.Size( 64, 64 )
+                                }
+                      });
+                      markerHolderArray.push(marker);
+                  }
+
+              // End For loop
+              } 
+
+            // End if statement
+            } 
     });
 // End initMAp()
 }

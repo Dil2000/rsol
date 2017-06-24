@@ -18,7 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <!--Moments-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
-    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon.ico"/>
+    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon1.ico"/>
   </head>
     <body class="text-center"> 
 
@@ -49,16 +49,15 @@
 
     <div class="row">
       <div class="col-md-12">
-        <form id ="myForm" onsubmit="return false;">
-            <p>Enter a flight ident to track: </p>
+        <form onsubmit="return false;">
+            <h5>Enter a flight ident to track: </h5>
             <input type="text" name="ident" id="ident_text" value="DL 675" />
             <input type="submit" id="go_button" value="Search Depature and Destinations" />
 
             <select id="OptionDestination"></select>
             <select id="OptionDepature"></select>
             <input type="submit" id="submitdd" value="Submit" />
-            <button type="submit" id="getMarkers" value="getMarkers">Get Markers</button>  
-           
+            <button type="reset" id="reset" value="reset">Reset</button>  
         </form><br/><br/>
       </div>
     </div>
@@ -100,9 +99,9 @@
 
 <!-- Scripts -->
     <!-- Firebase only if we need it -->
-   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <!-- google maps script -->
-    <script id="googleMaps" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAlBkzOyC-pTIKuJSuvqls1eRlO7N7BEY&libraries=geometry,places&callback=initMap" async defer></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAlBkzOyC-pTIKuJSuvqls1eRlO7N7BEY&libraries=geometry,places&callback=initMap" async defer></script> 
     <!-- flight route script -->
     <script src="assets/javascript/route.js"></script>
 
