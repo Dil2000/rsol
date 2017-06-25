@@ -7,10 +7,11 @@
 
   var lengthOfArray = 0; 
 
-  // Holders for inputs 
-  var Departure = "";
-  var Destination = "";
- 
+  // Find the city attractions
+  var firstLati ; 
+  var firstLong ;
+  var lastLati ;
+  var lastLong ;
 
   // Route colors
   var colorstroke=0;
@@ -143,9 +144,8 @@
       console.log(result);
       for (flight of result.FlightInfoExResult.flights) { 
         if (flight.actualarrivaltime > 0) {
-          Destination = ($("#OptionDestination" ).val().trim());
-          Depature = ($("#OptionDepature" ).val().trim()); 
-          console.log("Departure: " + Departure + " Destination: " + Destination);
+          var Destination = ($("#OptionDestination" ).val().trim());
+          var Depature = ($("#OptionDepature" ).val().trim()); 
           if ( (Destination == flight.destinationCity) && (Depature == flight.originCity)){
             fetchAndPost(flight.faFlightID);
             console.log("Flight Id : " + flight.faFlightID +" Origin Airport : " + flight.originName + " Destination Airport : " + flight.destinationName); 
@@ -156,7 +156,6 @@
           }              
         }
       } 
-      //PointersOntheMap();
       return;
       },
       error: function(data, text) { alert('Failed to fetch flight: ' + data); },
@@ -166,9 +165,7 @@
     });
   }
 
-/****************************************************************************************
-                                  Google initMap()
-*****************************************************************************************/     
+/******* Draw Lines in Google Map ****************************/     
 
   function initMap() {
 
@@ -194,7 +191,8 @@
 
     flightPath.setMap(map);
 
-    //***********************Delete function*****************************************
+
+
     function deleteMarkers() {
         if (markerHolderArray) {
             for (var i = 0; i < markerHolderArray.length; i++) {
@@ -248,65 +246,16 @@
       ["Monument Rocks", 38.792915, -100.762839, "Wichita",36],
       ["Mt Elbert", 39.117811, -106.445275, "Denver",37],
       ["Hoover Dam", 36.016226, -114.737241, "Las Vegas",38]
-     ];
+    ];
 
-
-/******* Find cities close to the the route ****************************/  
-
-    $('#go_button').on ("click", function() {
-      // clearData();
-      ExtractDataFromFlightAware(); //find flight number
-      console.log("something");
-    });
-
-    $("#submitdd").on("click",function(){
-      FindSpecificFlight();  // find flight data
-
-
-            // //====Get values for Departure and Destination==========================
-            // if ( ( Departure == "Atlanta, Ga") && ( Destination == "New York, NY"  ) ) {
-            //     //IAHtoJAXPath.setMap(map);
-            //     deleteMarkers();
-            //     for( var i = 0; i < markerLocations.length; i++ ){
-            //         if ( markerLocations[i].indexOf( "San Francisco" ) != -1 ) {
-            //             var city = i;
-            //             var position = new google.maps.LatLng(markerLocations[city][1], markerLocations[city][2]);
-            //             bounds.extend(position);
-            //             marker = new google.maps.Marker({
-            //                     position: position,
-            //                     map: map,
-            //                     title: markerLocations[i][0],
-            //                     visible: true,
-            //                     icon: {
-            //                     url: "assets/images/test.png",
-            //                     scaledSize: new google.maps.Size( 64, 64 )
-            //                 }
-            //           });
-            //           markerHolderArray.push(marker);
-            //       }
-            //   // End For loop
-            //   } 
-            // // End if statement
-            // } 
-            // else {
-            //   //IAHtoJAXPath.setMap(null);
-
-            // }
-
-
-
-
-    // End submitdd button=======================
-    });
-
-    $("#getMarkers").on("click",function(){
-      //window.location.reload();
-                  if (  $( "#OptionDestination" ).val() == "Atlanta, GA" ) {
+  $("#getMarkers").on("click",function(){
+    //window.location.reload();
+              if (  $( "#OptionDestination" ).val() == "Atlanta, GA" ) {
                 //IAHtoJAXPath.setMap(map);
 
                 deleteMarkers();
                 for( var i = 0; i < markerLocations.length; i++ ){
-                    if ( markerLocations[i].indexOf( "San Francisco" ) != -1 ) {
+                    if ( markerLocations[i].indexOf( "Atlanta" ) != -1 ) {
                         var city = i;
                         var position = new google.maps.LatLng(markerLocations[city][1], markerLocations[city][2]);
                         //bounds.extend(position);
@@ -328,9 +277,18 @@
 
             // End if statement
             } 
-    });
-// End initMAp()
-}
-/******************************************************************************************
-                                      End initMap()
-*******************************************************************************************/
+  });
+  //End initMap() 
+  };
+
+
+  $('#go_button').on ("click", function() {
+    // clearData();
+    ExtractDataFromFlightAware(); //find flight number
+    console.log("something");
+  });
+
+  $("#submitdd").on("click",function(){
+    FindSpecificFlight();  // find flight data
+  });
+
