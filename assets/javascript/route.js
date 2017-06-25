@@ -5,7 +5,6 @@
     var y =[]; // Longitutes for the route
     var z =[]; // Flight Id
     var LatLongArray = []; // Arrange flight path
-    noOfClicks = 0; // to add different color strokes
 
     var pointerId =[]; var ptLt=[]; var ptLg=[]; var ptDes=[]; // Attractions
 
@@ -19,8 +18,8 @@
     var fxml_url = 'https://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
 
 
-
     /******* Firebase ***************************************************/
+
     function ExtractDataFromFirebase() {
       // Initialize Firebase
       var config = {
@@ -65,98 +64,73 @@
         mapTypeId: 'terrain'
       });
 
-      //if (LatLongArray is empty())
       // Arrage the flight route path in an array
       for (var i = 0 ; i < lengthOfArray ; i++){ 
-         LatLongArray.push({lat: x[i], lng: y[i]}); //Route             
+        LatLongArray.push({lat: x[i], lng: y[i]}); //Route             
       }
       //var noOfRoutes = LatLongArray.length / lengthOfArray;
       var flightPlanCoordinates = LatLongArray;
       // Draw the route
       var flightPath = new google.maps.Polyline({         
-          path: flightPlanCoordinates,
-          geodesic: true,
-          strokeColor: StrokeColorArray[StrokeAdd],
-          strokeOpacity: 1.0,
-          strokeWeight: 2
+        path: flightPlanCoordinates,
+        geodesic: true,
+        strokeColor: StrokeColorArray[StrokeAdd],
+        strokeOpacity: 1.0,
+        strokeWeight: 2
       });
       flightPath.setMap(map);
       StrokeAdd++;
 
-      infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService(map);
-        for(var j = 0; j < ptLt.length; j++ ) {
-          if (ptLt[j] != 0){
-            var latitu = {lat:  ptLt[j] , lng: ptLg[j]}; // Working dont change
-            service.nearbySearch({
-            location: latitu, //{lat:26.150 , lng: -80.153}, 
-            radius: 500,
-            type: ['stadium'],
-            animation: google.maps.Animation.DROP          
-            }, callback); 
-          }
-        }
-
-      // Create pointers in the map
-      function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
-        }
-      }
-
-      function createMarker(place) {
-        var placeLoc = place.geometry.location;
+      // Adding pointers of attractions
+      for(var j = 0; j < ptLt.length; j++ ) {  
+        var latitu = {lat:  ptLt[j] , lng: ptLg[j]};
+        var title = pointerId[j];
         var marker = new google.maps.Marker({
+          position: latitu,
           map: map,
-          position: place.geometry.location,
-          //icon: {
-          //  url: "assets/images/test.png",
-          //  scaledSize : new google.maps.Size(64,64)
-          //}
+          title: title,
+          animation: google.maps.Animation.DROP 
         });
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }; 
+      }
     }; 
 
 
     /******* Flight-aware - Origin Depature *****************************/  
+
     function findFlightRoute(flight_id){
-        $.ajax({
-          type: 'GET',
-          url: fxml_url + 'GetHistoricalTrack', 
-          data: { 'faFlightID' : flight_id},
-          success : function(result) {
-            if (result.error) {
-              console.log('Failed to decode route: ' + result.error);
-              return;
-            };   
-            console.log(result);
-            var points = result.GetHistoricalTrackResult.data;
-            lengthOfArray = points.length;
-            for (i = 0; i < points.length; i++) {
-              var a = points[i].latitude;
-              var b = points[i].longitude;  
-              x.push(a);
-              y.push(b); 
-              z.push(points[i].timestamp);
-            };
-            //return;
-            initMap();
-            console.log(flight_id);
-            },
-            error: function(data, text) { console.log('Failed to decode route: ' + data); },
-            dataType: 'jsonp',
-            jsonp: 'jsonp_callback',
-            //xhrFields: { withCredentials: true }
-        });
+      $.ajax({
+        type: 'GET',
+        url: fxml_url + 'GetHistoricalTrack', 
+        data: { 'faFlightID' : flight_id},
+        success : function(result) {
+          if (result.error) {
+            console.log('Failed to decode route: ' + result.error);
+            return;
+          };   
+          console.log(result);
+          var points = result.GetHistoricalTrackResult.data;
+          lengthOfArray = points.length;
+          for (i = 0; i < points.length; i++) {
+            var a = points[i].latitude;
+            var b = points[i].longitude;  
+            x.push(a);
+            y.push(b); 
+            z.push(points[i].timestamp);
+          };
+          //return;
+          initMap();
+          console.log(flight_id);
+        },
+        error: function(data, text) { console.log('Failed to decode route: ' + data); },
+        dataType: 'jsonp',
+        jsonp: 'jsonp_callback',
+        //xhrFields: { withCredentials: true }
+      });
     };
 
+
     /******* Find the flight details of a selected flight number ********/ 
+
     function ExtractDataFromFlightAware(){
       $.ajax({
         type: 'GET',
@@ -190,6 +164,7 @@
         
 
     /******* Click Events ***********************************************/ 
+    
     $('#go_button').on ("click", function() {
       // clearData();
       ExtractDataFromFlightAware(); //find flight number
@@ -200,7 +175,6 @@
       var selectedId = $("#OptionDepature").find('option:selected').attr('id');
       findFlightRoute(selectedId);
       $('#results').html("Flight Route Selected");
-      noOfClicks++;
     });
 
     $("#reset").on("click",function(){
