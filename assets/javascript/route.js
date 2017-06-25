@@ -1,5 +1,3 @@
-//$(document).ready(function() {
-
   // Global variable
   var x =[]; // Latitues for the route
   var y =[]; // Longitutes for the route
@@ -249,13 +247,12 @@
     ];
 
   $("#getMarkers").on("click",function(){
-    //window.location.reload();
+            //event.preventDefault();
+            deleteMarkers();
+            //$("#myForm").bind("submit", function(){
               if (  $( "#OptionDestination" ).val() == "Atlanta, GA" ) {
-                //IAHtoJAXPath.setMap(map);
-
-                deleteMarkers();
                 for( var i = 0; i < markerLocations.length; i++ ){
-                    if ( markerLocations[i].indexOf( "Atlanta" ) != -1 ) {
+                    if ( markerLocations[i].indexOf( "Atlanta") != -1 ) {
                         var city = i;
                         var position = new google.maps.LatLng(markerLocations[city][1], markerLocations[city][2]);
                         //bounds.extend(position);
@@ -271,13 +268,14 @@
                       });
                       markerHolderArray.push(marker);
                   }
-
               // End For loop
               } 
 
             // End if statement
             } 
-  });
+        });
+
+    //});
   //End initMap() 
   };
 
@@ -285,7 +283,6 @@
   $('#go_button').on ("click", function() {
     // clearData();
     ExtractDataFromFlightAware(); //find flight number
-    console.log("something");
   });
 
   $("#submitdd").on("click",function(){
