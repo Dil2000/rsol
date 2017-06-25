@@ -246,6 +246,36 @@
       ["Hoover Dam", 36.016226, -114.737241, "Las Vegas",38]
     ];
 
+  var infoWindowContent = [
+    // Capitol Building
+    ["<div style='100px'>" + 
+      "<h3>Georgia State Capitol</h3>" +
+      "<img src='assets/images/state_capitol_building.jpg' style='height: 75px; width: 75px;'>" +
+      "<p>This gold dome building has been the symbol of Atlanta since 1889</p>" +
+      "</div>" 
+    ],
+    // Georgia Dome
+    ["<div style='150px'>" + 
+      "<h3>Georgia Dome</h3>" +
+      "<img src='assets/images/falcons_nest.jpg' style='height: 75px; width: 75px;'"+
+      "<p>Home of the Atlanta Falcons</p>" +
+      "</div>" 
+    ],
+    // Spaghetti Junction
+    ["<div style='150px'>" + 
+      "<h3>Spaghetti Junction</h3>" +
+      "<img src='assets/images/spaghetti_junction.jpg' style='height: 75px; width: 75px;'>" +
+      "<p>Atlanta's interwined interest interchange</p>" +
+      "</div>" 
+    ]
+
+  ];
+
+  var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+
+
+
   $("#getMarkers").on("click",function(){
             //event.preventDefault();
             deleteMarkers();
@@ -265,8 +295,15 @@
                                     url: "assets/images/test.png",
                                     scaledSize: new google.maps.Size( 64, 64 )
                                 }
-                      });
-                      markerHolderArray.push(marker);
+                        });
+                        markerHolderArray.push(marker);
+                        // Add info window to marker    
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                                infoWindow.setContent(infoWindowContent[i][0]);
+                                infoWindow.open(map, marker);
+                            }
+                        })(marker, i));
                   }
               // End For loop
               } 
