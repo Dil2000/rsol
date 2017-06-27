@@ -115,7 +115,7 @@
             var OptDep = $("<option>");
             OptDep.addClass("dep");
             OptDep.text(flight.originCity);
-            $("#OptionDepature").append(OptDep);
+            $("#OptionDeparture").append(OptDep);
           }              
         }            
         return;
@@ -143,7 +143,7 @@
       for (flight of result.FlightInfoExResult.flights) { 
         if (flight.actualarrivaltime > 0) {
           var Destination = ($("#OptionDestination" ).val());//.trim());
-          var Depature = ($("#OptionDepature" ).val());//.trim()); 
+          var Depature = ($("#OptionDeparture" ).val());//.trim()); 
           if ( (Destination == flight.destinationCity) && (Depature == flight.originCity)){
             fetchAndPost(flight.faFlightID);
             console.log("Flight Id : " + flight.faFlightID +" Origin Airport : " + flight.originName + " Destination Airport : " + flight.destinationName); 
@@ -545,11 +545,13 @@ var markerLocations = [
             event.preventDefault();
             deleteMarkers();
             var chosenDestination = $( "#OptionDestination" ).val();
+            var chosenDeparture = $( "#OptionDeparture" ).val();
             console.log("Chosen Destination: " + chosenDestination);
+             console.log("Chosen Destination: " + chosenDeparture);
             //$("#myForm").bind("submit", function(){
-              if (  $( "#OptionDestination" ).val() == chosenDestination ) {
+              if ( $( "#OptionDestination" ).val() == chosenDestination ) {
                 for( var i = 0; i < markerLocations.length; i++ ){
-                    if ( markerLocations[i].indexOf( chosenDestination) != -1 ) {
+                    if ( markerLocations[i].indexOf( chosenDestination ) != -1 ) {
                         var city = i;
                         var position = new google.maps.LatLng(markerLocations[city][1], markerLocations[city][2]);
                         //bounds.extend(position);
@@ -576,8 +578,40 @@ var markerLocations = [
               // End For loop
               } 
 
-            // End if statement
+            // End if statement for Destination
             } 
+
+              if ( $( "#OptionDeparture" ).val() == chosenDeparture ) {
+                for( var i = 0; i < markerLocations.length; i++ ){
+                    if ( markerLocations[i].indexOf( chosenDeparture ) != -1 ) {
+                        var city = i;
+                        var position = new google.maps.LatLng(markerLocations[city][1], markerLocations[city][2]);
+                        //bounds.extend(position);
+                        marker = new google.maps.Marker({
+                                position: position,
+                                map: map,
+                                title: markerLocations[i][0],
+                                visible: true,
+                                icon: {
+                                    url: "assets/images/test.png",
+                                    scaledSize: new google.maps.Size( 64, 64 )
+                                },
+                                animation: google.maps.Animation.DROP 
+                        });
+                        markerHolderArray.push(marker);
+                        // Add info window to marker    
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                                infoWindow.setContent(infoWindowContent[i][0]);
+                                infoWindow.open(map, marker);
+                            }
+                        })(marker, i));
+                  }
+              // End For loop
+              } 
+
+            // End if statement for Destination
+            }             
         });
 
     //});
