@@ -1,4 +1,4 @@
-* {
+body, * {
 	font-family: 'Quicksand', sans-serif;
 }
 
@@ -6,20 +6,19 @@ h3 {
 	margin-top: 0px;
 }
 
-<<<<<<< Updated upstream
-=======
+
 h5 {
 	margin-top: 50px;
 	margin-bottom: 30px;
 	font-size: 20px;
 }
 
+
 #video {
 	width: 100%;
 	height: auto;
 }
 
->>>>>>> Stashed changes
 #link {
   margin-right: 30px;
   margin-bottom: 30px;
@@ -41,7 +40,7 @@ h5 {
 }
 
 .dropdownbutton {
-	background-color: #01B7F1;
+	background-color: #003975;
 	border: 1px solid grey;
 	border-radius: 3px;
 
@@ -65,15 +64,23 @@ h5 {
 	margin-bottom: 30px;
 }
 
+.lilogo {
+	width: 200px;
+    position: absolute;
+    top: 40px;
+    opacity: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.lilogo:hover {
+	opacity: .9;
+}
 .teampic {
 	width: 200px;
 	height: 200px;
 	border-radius: 500px;
 	margin-top: 40px;
-}
-
-.teampic:hover {
-    background-image: url('assets/images/florian.jpg');
 }
 
 #map {
@@ -129,6 +136,16 @@ z-index:100;
 
 .DivName {cursor: pointer}
 }
+
+/* about us linked in */
+/*#lilogo {
+	width: 200px;
+    position: absolute;
+    top: 40px;
+    opacity: 0;
+    transition: all .2 ease-in-out;
+}*/
+
 
 @media (max-width: 575px) {}
 
