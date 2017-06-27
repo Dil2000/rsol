@@ -332,3 +332,280 @@ var markerLocations = [
 
 
   ];
+
+  //=========================================================Coordinates============================================================
+//short figts 1 of 5-------------------------
+var IAHtoJAXCoordinatess = [
+  //IAH airport
+  {lat: 29.990326, lng: -95.336952},
+  {lat: 30.012031, lng: -94.866943},
+  {lat: 29.458731, lng: -94.42749},
+  {lat: 29.487425, lng: -92.504883},
+  {lat: 30.533876, lng: -89.439699},
+  {lat: 30.57172, lng: -87.989502},
+  {lat: 30.845647, lng: -86.638184},
+  {lat: 30.65209, lng: -84.660645},
+  {lat: 30.37169, lng: -82.087097},
+  // JAX airport
+  {lat: 30.494243, lng: -81.688156}
+];
+var IAHtoJAXPath = new google.maps.Polyline({
+   path: IAHtoJAXCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+IAHtoJAXPath,setMAP(map);
+
+// Short fights 2 0f 5-----------------
+var MSPtoINDCoordinates = [
+  //MSP airport
+  {lat:44.933453,lng:-93.060379},
+  {lat: 44.957024, lng: -93.427735},
+  {lat: 44.699898, lng: -93.47168},
+  {lat: 44.598291, lng: -93.175049},
+  {lat: 44.559164, lng: -92.746582},
+  {lat: 43.913724, lng: -91.779785},
+  {lat: 43.691708, lng: -91.274414},
+  {lat: 43.004647, lng: -89.956055},
+  {lat: 40.313044, lng: -87.539064},
+  {lat: 39.854938, lng: -86.514587},
+  {lat: 39.894987, lng: -86.314087},
+  {lat: 39.804316, lng:-86.171265 },
+  {lat: 39.717223, lng: -86.295547},
+  // IND airport
+  {lat: 39.717223, lng: -86.295547}
+];
+
+var MSPtoINDPath = new google.maps.Polyline({
+   path: MSPtoINDCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+MSPtoINDPath.setMAP(map);
+
+//short figts 3 of 5----------------------------------
+var MSPtoSLCCoordinates = [
+  {lat: 40.79016, lng :-111.979179 },
+  {lat: 40.480382, lng: -111.840821},
+  {lat: 40.178874, lng:-111.42334 },
+  {lat: 40.178874, lng: -109.072266},
+  {lat: 40.128491, lng: -107.358399},
+  {lat: 41.244773, lng: -104.0625},
+  {lat: 42.5207, lng: -98.657227},
+  {lat: 43.421009, lng: -96.459961},
+  {lat: 44.885066, lng: -93.222427}
+  ];
+
+var MSPtoSLCPath = new google.maps.Polyline({
+   path: MSPtoSLCCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+MSPtoSLCPath.setMAP(map);
+
+// short figts 4 of 5-------------------------------
+var CLTtoPHLCoordinates = [
+  // CHL airport
+  {lat: 35.187278, lng: -80.892334},
+  {lat: 35.115415, lng: -80.859375},
+  {lat: 34.985003, lng: -80.831909},
+  {lat: 34.867905, lng: -80.793457},
+  {lat: 34.813803, lng: -80.727539},
+  {lat: 34.83635, lng: -80.623169},
+  {lat: 35.007503, lng: -80.606689},
+  {lat: 35.330812, lng: -80.667114},
+  {lat: 35.835629, lng: -80.2771},
+  {lat: 37.317752, lng:-79.321289},
+  {lat: 38.882481, lng: -77.047119},
+  {lat: 39.414977, lng: -76.014404},
+  {lat: 39.783213, lng: -75.772705},
+  {lat: 40.178873, lng: -75.15747},
+  {lat: 40.22083, lng: -75.025634},
+  {lat: 40.086477, lng: -74.970703},
+  // PHL airport
+  {lat: 39.874439, lng: -75.242615}
+];
+
+var CLTtoPHLPath = new google.maps.Polyline({
+   path: CLTtoPHLCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+CLTtoPHLPath.setMAP(map);
+
+// short figts 5 of 5--------------------------------------
+var PDXtoSANCoordinates = [
+  //PDX airport
+  {lat: 45.590017, lng: -122.595062},
+  {lat: 45.305855, lng: -122.255959},
+  {lat: 45.213017, lng: -122.915064},
+  {lat: 43.992828, lng: -122.871119},
+  {lat: 33.454362, lng: -118.267825},
+  //SAN airport
+  {lat: 32.733863, lng: -117.193394}
+];
+
+var PDXtoSANPath = new google.maps.Polyline({
+   path: PDXtoSANCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+PDXtoSANPath.setMAP(map);
+
+
+// // Long flights 1 of 5----------------------------------
+var SFOtoBSOCoordinates = [
+  // SFO airport
+  {lat: 37.621302, lng: -122.379112},
+  {lat: 38.212288, lng: -122.574463},
+  {lat: 39.402244, lng: -120.146484},
+  {lat: 40.913512, lng: -114.169925},
+  {lat: 41.836827, lng: -104.018555},
+  {lat: 42.000325, lng: -90.131837},
+  {lat: 42.682435, lng: -73.344727},
+  //BSO airport
+  {lat: 42.365647, lng: -71.009789}
+];
+
+var SFOtoBSOPath = new google.maps.Polyline({
+   path: SFOtoBSOCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+SFOtoBSOPath.setMAP(map);
+
+
+// Long fights 2 0f 5-----------------------------------
+var LAXtoJAXCoordinates = [
+  //LAX airport
+  {lat: 33.941651, lng: -118.408585},
+  {lat: 34.161818, lng: -116.477052},
+  {lat: 34.939985, lng: -114.653322},
+  {lat: 36.967449, lng: -107.512207},
+  {lat: 38.169114, lng: -102.062988},
+  {lat: 39.300298, lng: -95.097656},
+  {lat: 40.044437, lng: -87.626952},
+  {lat: 39.89288, lng: -80.551757},
+  {lat: 40.128491, lng: -74.838867},
+  //JAX airport
+  {lat: 40.128491, lng: -74.838867}
+];
+
+var LAXtoJAXPath = new google.maps.Polyline({
+   path: LAXtoJAXCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+LAXtoJAXPath.setMAP(map);
+
+// Long fights 3 0f 5-----------------------------------
+var PDXtoHOUCoordinates = [
+  //PDX airport
+  {lat: 45.590017, lng: -122.595062},
+  {lat: 45.352147, lng: -122.036134},
+  {lat: 45.521746, lng: -121.179201},
+  {lat: 42.032983, lng: -113.906255},
+  {lat: 35.424873, lng: -103.051758},
+  {lat: 32.063961, lng: -95.976564},
+  //HOU airport
+  {lat: 29.990623, lng: -95.337296}
+];
+
+var PDXtoHOUSPath = new google.maps.Polyline({
+   path: PDXtoHOUCoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+PDXtoHOUPath.setMAP(map);
+
+// Long fights 4 0f 5-----------------------------------
+var SEAtoMIACoordiantes = [
+  //SEA airport
+  {lat: 47.45038, lng: -122.309074},
+  {lat: 48.107439, lng: -122.431643},
+  {lat: 48.048718, lng: -120.849609},
+  {lat: 47.754099, lng: -116.191406},
+  {lat: 46.739869, lng: -113.994141},
+  {lat: 44.777937, lng: -109.951175},
+  {lat: 40.913513, lng: -102.106934},
+  {lat: 37.788082, lng: -96.943361},
+  {lat: 37.020099, lng: -94.746094},
+  {lat: 30.562262, lng: -84.946289},
+  {lat: 28.729131, lng: -82.573243},
+  {lat: 26.096255, lng: -80.639648},
+  {lat: 25.992612, lng: -80.189209},
+  // MIA airport
+  {lat: 25.795873, lng: -80.287056}
+];
+
+var SEAtoMIAPath = new google.maps.Polyline({
+   path: SEAtoMIACoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+SEAtoMIAPath.setMAP(map);
+
+// Long fights 5 0f 5-----------------------------------
+var MSPtoMSYCoordinates = [
+//MSP airport
+  {lat: 44.885066, lng: -93.222427},
+  {lat: 45.089037, lng: -93.735352},
+  {lat: 44.684278, lng: -93.559569},
+  {lat: 43.468869, lng: -93.22998},
+  {lat: 42.39101, lng: -92.416992},
+  {lat: 40.563896, lng: -92.263184},
+  {lat: 38.616872, lng: -91.867675},
+  {lat: 36.474308, lng: -91.340331},
+  {lat: 34.052661, lng: -90.966797},
+  {lat: 31.334872, lng: -90.307617},
+  {lat: 30.97761, lng: -90.527344},
+  //MSY airport
+  {lat: 29.992259, lng: -90.259037}
+];
+
+var MSPtoMSYPath = new google.maps.Polyline({
+   path: SEAtoMIACoordinates,
+   geodesic: true,
+   strokeColor: '#00FFFF',
+   strokeOpacity: 1.0,
+   strokeWeight: 2
+   //map:map
+});
+
+MSPtoMSYPath.setMAP(map);

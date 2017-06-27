@@ -184,7 +184,7 @@
       geodesic: true,
       strokeColor: StrokeColorArray[colorstroke++],
       strokeOpacity: 1.0,
-      strokeWeight: 2
+      strokeWeight: 2,
     });
 
     flightPath.setMap(map);
@@ -245,289 +245,325 @@ var markerLocations = [
 
   var infoWindowContent = [
     // Capitol Building
-    ["<div style='100px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Georgia State Capitol</h3>" +
-      "<img src='assets/images/state_capitol_building.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/state_capitol_building.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>This gold dome building has been the symbol of Atlanta since 1889</p>" +
       "</div>" 
     ], 
     // Georgia Dome
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Georgia Dome</h3>" +
-      "<img src='assets/images/falcons_nest.jpg' style='height: 75px; width: 75px;'"+
+      "<img src='assets/images/falcons_nest.jpg' style='height: 75px; width: 75px; border-radius: 50%;'"+
+      "<br>"+
       "<p>Home of the Atlanta Falcons</p>" +
       "</div>" 
     ],
     // Spaghetti Junction
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Spaghetti Junction</h3>" +
-      "<img src='assets/images/spaghetti_junction.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/spaghetti_junction.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Atlanta's interwined interest interchange</p>" +
       "</div>" 
     ],
 
     // Alcatraz Island 
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Alcatraz Island</h3>" +
-      "<img src='assets/images/alcatraz.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/alcatraz.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>The Rock, a little island with a lot history</p>" +
       "</div>" 
     ],
 
     // Statue of Liberty
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Statue of Liberty</h3>" +
-      "<img src='assets/images/statue_of_liberty.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/statue_of_liberty.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>France's gift to America for building a successful republic</p>" +
       "</div>" 
     ],
 
       // Brooklyn Bridge
-     ["<div style='150px'>" + 
+     ["<div style='font-family: quicksand'>" + 
       "<h3>Brooklyn Bridge</h3>" +
-      "<img src='assets/images/brooklyn_bridge.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/brooklyn_bridge.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>The world's first steel-wire supension bridge that is still used today.</p>" +
       "</div>" 
      ],
 
     // The Alamo
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>The Alamo</h3>" +
-      "<img src='assets/images/alamo.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/alamo.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
       "<p>A failed attempt to gain independence for Texas from Mexico turned into a successful multi-million dollar tourist attraction</p>" +
+      "<br>"+
       "</div>" 
     ],
 
     // Glacier National Park
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Glacier National Park</h3>" +
-      "<img src='assets/images/glacier_national_park.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/glacier_national_park.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>For millions of years glaciers have carved the lands of the park and still are today</p>" +
       "</div>" 
     ],
 
      // Rocky Mountain National Park
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Rocky Mountain National Park</h3>" +
-      "<img src='assets/images/glacier_national_park.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/glacier_national_park.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>See some of the best landscapes that Amercica has to offer</p>" +
       "</div>" 
     ],   
 
      // Port of Miami
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Port of Miami</h3>" +
-      "<img src='assets/images/port_of_miami.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/port_of_miami.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Home to one of the busiest ports in the US</p>" +
       "</div>" 
     ],      
 
      // Disney's Magic Kingdom
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Disney's Magic Kingdom</h3>" +
-      "<img src='assets/images/magic_kingdom.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/magic_kingdom.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>In this kingdom dreams really do come true</p>" +
       "</div>" 
     ],
 
      // Golden Gate Bridge
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Golden Gate Bridge</h3>" +
-      "<img src='assets/images/golden_gate_bridge.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/golden_gate_bridge.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>When it opened in 1937 it was the longest supension bridge in the world</p>" +
       "</div>" 
     ],
 
      // Lake Tahoe
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Lake Tahoe</h3>" +
-      "<img src='assets/images/lake_tahoe.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/lake_tahoe.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Voted to be America's best lake</p>" +
       "</div>" 
     ],
 
      // Yellowstone National Park
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Yellowstone National Park</h3>" +
-      "<img src='assets/images/yellow_national_park.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/yellow_national_park.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>The country's first national park andnce you visit you'll know why it was the first to be chosen</p>" +
       "</div>" 
     ],
      // Washington Monument
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Washington Monument</h3>"+
-      "<img src='assets/images/washington_monument.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/washington_monument.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Built to honor the first president.</p>" +
       "</div>" 
     ],
 
       // Niagra Falls
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Niagara Falls</h3>"+
-      "<img src='assets/images/niagara_falls.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/niagara_falls.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>At the border of the US and Canada three waterfalls come together.</p>" +
       "</div>" 
     ], 
 
       // Cloud Gate
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Cloud Gate</h3>"+
-      "<img src='assets/images/cloud_gate.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/cloud_gate.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Cloud Gate is a tourist attraction that reflects the skylines and the sky above Chicago.</p>" +
       "</div>" 
     ],                       
 
       // Milwaukee Art Museum 
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Milwaukee Art Museum</h3>"+
-      "<img src='assets/images/mam.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/mam.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>With its Quadracci Pavilion, the once hidden museum is now an international attraction.</p>" +
       "</div>" 
     ], 
 
       // Gateway Arch 
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Gateway Arch</h3>"+
-      "<img src='assets/images/gateway_arch.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/gateway_arch.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Here in St Louis, the Louisiana purchase was held kicking off the westward expansion.</p>" +
       "</div>" 
     ],
 
       // Monument Valley 
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Monument Valley</h3>"+
-      "<img src='assets/images/monument_valley.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/monument_valley.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Director John Ford made this valley the iconic image of the west.</p>" +
       "</div>" 
     ], 
 
       // Great Salt Lake Desert
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Monument Valley</h3>"+
-      "<img src='assets/images/monument_valley.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/monument_valley.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Here you will find the famouse Bonneville Salt Falts.</p>" +
       "</div>" 
     ],  
 
       // Mount Rushmore
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Mount Rushmore</h3>"+
-      "<img src='assets/images/mount_rushmore.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/mount_rushmore.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Washington was the first, Jefferson expanded, Lincoln united, Roosevelt conserved.</p>" +
       "</div>" 
     ],
 
     // San Andreas Fault 
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>San Andreas Fault</h3>"+
-      "<img src='assets/images/san_andreas_fault.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/san_andreas_fault.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>800 miles long and 10 miles deep.</p>" +
       "</div>" 
     ],
 
     // Las Vegas Strip 
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Las Vegas Strip</h3>"+
-      "<img src='assets/images/las_vegas_strip.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/las_vegas_strip.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>What happens in Vegas, stays in Vegas</p>" +
       "</div>" 
     ], 
 
     // Cedar Point
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Cedar Point</h3>"+
-      "<img src='assets/images/cedar_point.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/cedar_point.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>The roller coaster capitol of the world.</p>" +
       "</div>" 
     ],
 
 
     // Space Needle
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Space Needle</h3>"+
-      "<img src='assets/images/space_needle.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/space_needle.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>The symbol of Seattle.</p>" +
       "</div>" 
     ], 
 
 
     // Liberty Memorial
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Liberty Memorial</h3>"+
-      "<img src='assets/images/liberty_memorial.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/liberty_memorial.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Dedeicated to those that fell in WWI.</p>" +
       "</div>" 
     ], 
 
     // Stone Mountain
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Stone Mountain</h3>"+
-      "<img src='assets/images/stone_mountain.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/stone_mountain.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>A memorial to the Georgia confederates.</p>" +
       "</div>" 
     ], 
 
     //Andrew Jackson's Hermitage
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Andrew Jackson's Hermitage</h3>"+
-      "<img src='assets/images/hermitage.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/hermitage.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Once home to President Andrew Jackson.</p>" +
       "</div>" 
     ],    
 
     //Pilgrim Monument
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Pilgrim Monument</h3>"+
-      "<img src='assets/images/pilgrim_monument.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/pilgrim_monument.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Built to commerate the landing of the Pilgrims.</p>" +
       "</div>" 
     ],  
 
     //Hollywood
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Hollywood Sign</h3>"+
-      "<img src='assets/images/hollywood.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/hollywood.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Real estate advertisement turned cultural icon.</p>" +
       "</div>" 
     ], 
 
 
     //Four Corners Monument
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Hollywood Sign</h3>"+
-      "<img src='assets/images/hollywood.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/hollywood.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Arizona, Colorado, New Mexico, and Utah come together at this one spot.</p>" +
       "</div>" 
     ], 
 
     //Southern Most Point
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Souther Most Point</h3>"+
-      "<img src='assets/images/southern_most_point.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/southern_most_point.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Lower 48's most southern point.</p>" +
       "</div>" 
     ],  
 
     //Monument Rock
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Monument Rock</h3>"+
-      "<img src='assets/images/monument_rock.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/monument_rock.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Kansas's famous badlands.</p>" +
       "</div>" 
     ],  
 
     //Mt Elbert
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Mount Elbert</h3>"+
-      "<img src='assets/images/mt_elbert.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/mt_elbert.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>Highest summit in the Rocky Mountains.</p>" +
       "</div>" 
     ],  
  
     //Hoover Dam
-    ["<div style='150px'>" + 
+    ["<div style='font-family: quicksand'>" + 
       "<h3>Hoover Dam</h3>"+
-      "<img src='assets/images/hoover_dam.jpg' style='height: 75px; width: 75px;'>" +
+      "<img src='assets/images/hoover_dam.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+      "<br>"+
       "<p>When it was built, it was the largest dam in the world.</p>" +
       "</div>" 
     ] 
