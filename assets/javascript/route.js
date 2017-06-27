@@ -561,7 +561,8 @@ var markerLocations = [
                                 icon: {
                                     url: "assets/images/test.png",
                                     scaledSize: new google.maps.Size( 64, 64 )
-                                }
+                                },
+                                animation: google.maps.Animation.DROP 
                         });
                         markerHolderArray.push(marker);
                         // Add info window to marker    
