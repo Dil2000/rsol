@@ -169,16 +169,22 @@
       // clearData();
       ExtractDataFromFlightAware(); //find flight number
       console.log("length of fb : " + ptLt.length);
+      $(this).attr( "disabled", true );
+      $("#submitdd").attr({"disabled" :false , "value" : "Find Route"});
     });
 
     $("#submitdd").on("click",function(){
       var selectedId = $("#OptionDepature").find('option:selected').attr('id');
       findFlightRoute(selectedId);
       $('#results').html("Flight Route Selected");
+      $("#go_button").attr("disabled",true);
+      $(this).attr('value', 'Another Route');      
     });
 
     $("#reset").on("click",function(){
       window.location.reload();
+      $("#go_button").attr( "disabled", false );
+      $("#submitdd").attr("disabled",true);
     });
     
 
