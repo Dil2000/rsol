@@ -18,7 +18,7 @@
     var longRoutes = []; // Longitutes for the route
     var NoOfPoints =[0]; // No of points for each flight
 
-    var routePointers = {latitue : "", longitude : "",flightId : "",clickedNumber : ""}
+    /*var routePointers = {latitue : "", longitude : "",flightId : "",clickedNumber : ""}*/
 
     // Link to flightawre site
     var fxml_url = 'https://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
@@ -128,10 +128,10 @@
               longRoutes.push(b);
               z.push(flight_id);
 
-              routePointers.latitue.push();
+           /*   routePointers.latitue.push();
               routePointers.longitude.push();
               routerPoitners.flightId.push();
-              routePoitners.clickedNumber.push();
+              routePoitners.clickedNumber.push();*/
               
           };
           NoOfPoints.push(lengthOfArray);
