@@ -147,7 +147,7 @@
             if (flight.actualdeparturetime > 0) {        
               var OptRoute = $("<option>");
               OptRoute.addClass("dep");
-              OptRoute.text(flight.originCity + " to " + flight.destinationCity + " on " + flight.filed_departuretime);
+              OptRoute.text(flight.originCity + " to " + flight.destinationCity + " on " + moment.unix(flight.filed_departuretime).format('dddd, MMMM Do, YYYY h:mm:ss A'));
               OptRoute.attr("id",flight.faFlightID);
               $("#OptionDepature").append(OptRoute);
             }              
@@ -169,16 +169,25 @@
       // clearData();
       ExtractDataFromFlightAware(); //find flight number
       console.log("length of fb : " + ptLt.length);
+      $(this).attr( "disabled", true );
+      $("#submitdd").attr({"disabled" :false , "value" : "Find Route"});
+      $("OptionDepature").attr("disabled",false);
     });
 
     $("#submitdd").on("click",function(){
       var selectedId = $("#OptionDepature").find('option:selected').attr('id');
       findFlightRoute(selectedId);
       $('#results').html("Flight Route Selected");
+      $("#go_button").attr("disabled",true);
+      $(this).attr('value', 'Another Route');    
+      $("OptionDepature").attr("disabled",true);  
     });
 
     $("#reset").on("click",function(){
       window.location.reload();
+      $("#go_button").attr( "disabled", false );
+      $("#submitdd").attr("disabled",true);
+      $("OptionDepature").attr("disabled",false);
     });
     
 
