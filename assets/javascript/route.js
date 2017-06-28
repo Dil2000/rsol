@@ -1,8 +1,7 @@
     // $(document).ready(function() {
 
     // Global variable
-    var x =[]; // Latitues for the route
-    var y =[]; // Longitutes for the route
+
     var z =[]; // Flight Id
     var LatLongArray = []; // Arrange flight path
 
@@ -13,6 +12,13 @@
     // Route colors
     var StrokeColorArray = ['#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116'];
     var StrokeAdd = 0; // can be removed
+
+    var noOfClicks = 1;
+    var latRoutes = []; // Latitues for the route
+    var longRoutes = []; // Longitutes for the route
+    var NoOfPoints =[0]; // No of points for each flight
+
+    var routePointers = {latitue : "", longitude : "",flightId : "",clickedNumber : ""}
 
     // Link to flightawre site
     var fxml_url = 'https://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
@@ -64,23 +70,28 @@
         mapTypeId: 'terrain'
       });
 
-      // Arrage the flight route path in an array
-      for (var i = 0 ; i < lengthOfArray ; i++){ 
-        LatLongArray.push({lat: x[i], lng: y[i]}); //Route             
+      for (var i = 0 ; i < noOfClicks ; i++){ 
+        var LatLongArray = [];
+        var startPoint = NoOfPoints[i-1];
+        var endPoint = NoOfPoints[i] + NoOfPoints[i-1];
+        endPoint = startPoint + endPoint;
+        console.log("start : " + startPoint + "   End point : " + endPoint);
+        //console.log(startPoint + "  " + endPoint);
+        for (var j = startPoint; j < endPoint ; j++){ 
+          LatLongArray.push({lat: latRoutes[j], lng: longRoutes[j]}); //Route   
+          var flightPlanCoordinates = LatLongArray;  
+          var flightPath = new google.maps.Polyline({   
+              path: flightPlanCoordinates,
+              geodesic: true,
+              strokeColor: StrokeColorArray[i],
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+            flightPath.setMap(map);
+            StrokeAdd++;
+        }
       }
-      //var noOfRoutes = LatLongArray.length / lengthOfArray;
-      var flightPlanCoordinates = LatLongArray;
-      // Draw the route
-      var flightPath = new google.maps.Polyline({         
-        path: flightPlanCoordinates,
-        geodesic: true,
-        strokeColor: StrokeColorArray[StrokeAdd],
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-      });
-      flightPath.setMap(map);
-      StrokeAdd++;
-
+       
       // Adding pointers of attractions
       for(var j = 0; j < ptLt.length; j++ ) {  
         var latitu = {lat:  ptLt[j] , lng: ptLg[j]};
@@ -113,13 +124,21 @@
           for (i = 0; i < points.length; i++) {
             var a = points[i].latitude;
             var b = points[i].longitude;  
-            x.push(a);
-            y.push(b); 
-            z.push(points[i].timestamp);
+              latRoutes.push(a);
+              longRoutes.push(b);
+              z.push(flight_id);
+
+              routePointers.latitue.push();
+              routePointers.longitude.push();
+              routerPoitners.flightId.push();
+              routePoitners.clickedNumber.push();
+              
           };
+          NoOfPoints.push(lengthOfArray);
           //return;
           initMap();
           console.log(flight_id);
+         
         },
         error: function(data, text) { console.log('Failed to decode route: ' + data); },
         dataType: 'jsonp',
@@ -168,7 +187,6 @@
     $('#go_button').on ("click", function() {
       // clearData();
       ExtractDataFromFlightAware(); //find flight number
-      console.log("length of fb : " + ptLt.length);
       $(this).attr( "disabled", true );
       $("#submitdd").attr({"disabled" :false , "value" : "Find Route"});
       $("OptionDepature").attr("disabled",false);
@@ -177,17 +195,19 @@
     $("#submitdd").on("click",function(){
       var selectedId = $("#OptionDepature").find('option:selected').attr('id');
       findFlightRoute(selectedId);
+      $("#OptionDepature").find('option:selected').remove();
       $('#results').html("Flight Route Selected");
       $("#go_button").attr("disabled",true);
       $(this).attr('value', 'Another Route');    
-      $("OptionDepature").attr("disabled",true);  
+      //$("#OptionDepature").attr("disabled",true);  
+      noOfClicks++;
     });
 
     $("#reset").on("click",function(){
       window.location.reload();
       $("#go_button").attr( "disabled", false );
       $("#submitdd").attr("disabled",true);
-      $("OptionDepature").attr("disabled",false);
+      $("#OptionDepature").attr("disabled",false);
     });
     
 
