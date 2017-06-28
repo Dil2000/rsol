@@ -6,9 +6,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+
   <link rel="stylesheet" href="assets/css/maproute.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>Right seat or the left?</title>
   <meta name="description" content="Find your ideal window seat">
   <meta name="keywords" content=""> 
@@ -55,12 +56,13 @@
         <form onsubmit="return false;">
             <h5>Enter a flight ident to track: </h5>
             <input type="text" name="ident" id="ident_text" value="DL 675" />
-            <input type="submit" id="go_button" value="Search Depature and Destinations" />
+            <input type="submit" class=button id="go_button" value="Search Depature and Destinations" />
 
             
-            <select id="OptionDepature"></select>
-            <input type="submit" id="submitdd" value="Submit" />
-            <button type="reset" id="reset" value="reset">Reset</button>  
+            <select id="OptionDepature" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button></select>
+            <input type="submit" class=button id="submitdd" value="Submit" />
+            <button type="reset" class=button id="reset" value="reset">Reset</button>  
         </form><br/><br/>
       </div>
     </div>

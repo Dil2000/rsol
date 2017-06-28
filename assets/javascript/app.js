@@ -1,4 +1,5 @@
 $(document).ready(function(){});
+
 // This example requires the Geometry library. Include the libraries=geometry
 // parameter when you first load the API.
 var openWeatherKey = "14a1400145a1d42b43dd8b077ba520fd";
