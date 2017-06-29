@@ -144,12 +144,6 @@
               latRoutes.push(a);
               longRoutes.push(b);
               z.push(flight_id);
-
-             /* routePointers.latitue.push();
-              routePointers.longitude.push();
-              routerPoitners.flightId.push();
-              routePoitners.clickedNumber.push();*/
-
           };
           NoOfPoints.push(lengthOfArray);
           //return;

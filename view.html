@@ -1,32 +1,24 @@
-<!DOCTYPE html>
 <html>
-  <head>
+
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="assets/css/maproute.css">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <title>Right seat or the left?</title>
   <meta name="description" content="Find your ideal window seat">
-  <meta name="keywords" content=""> 
+  <meta name="keywords" content="">
+  <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon1.ico"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <!--Firebase-->
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <!--Moments-->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
-    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon1.ico"/>
   </head>
-  <body class="text-center"> 
+
+<body class="text-center">  
   <video width="2160" height="444" id="video" autoplay loop>
   <source src="assets/video/rsol.mov">
   <source src="assets/video/rsol.ogv">
   <source src="assets/video/rsol.webm">
-  </video>
+  </video>   
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -42,44 +34,65 @@
             <ul class="nav navbar-nav">
             </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="photography.html">Photography tips</a></li>
-                <li><a href="view.html">View information</a></li>
-                <li><a href="view.html">About us</a></li>
+                <li class="active"><a href="view.html">View information<span class="sr-only">(current)</span></a></li>
+                <li><a href="aboutus.html">About us</a></li>
               </ul>
           </div>
       </div>
   </nav>
 
-    <div class="row">
-      <div class="col-md-12">
-        <form onsubmit="return false;">
-            <h5>Enter a flight ident to track: </h5>
-            <input type="text" name="ident" id="ident_text" value="DL 675" />
-            <input type="submit" class=button id="go_button" value="Search Depature and Destinations" />
-
-            
-            <select id="OptionDepature" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button></select>
-            <input type="submit" class=button id="submitdd" value="Submit" />
-            <button type="reset" class=button id="reset" value="reset">Reset</button>  
-        </form><br/><br/>
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <div class="row">
+    <div class="col-md-8">
+     <img class="img-responsive" src="assets/images/view.jpg" alt="Visible field of view">
+     </div>
+      <div class="col-md-4" style="font-size:15px;">
+        <h3>What is your vield of view from cruising altitude?</h3>
+        <p>Please bare in mind when using our route maps, that you cannot see objects directly under the plane. Depending on angle and distance to the window, your field of view starts at approximately two to five miles.</p>
+        <p>You will be able to distinguish man-made objects up to 15 miles, after that they are simply too small for the human eye to recognize.</p>
+        <p>That does not mean that you can’t see further than 15miles. Mountain ranges and coast lines can be identified well beyond that. At an altitude of 30’000 feet you the horizon is 211 miles away.</p>
       </div>
-    </div>
-
-    <div id="map"></div>
-    <div id="results"></div>
-
-    <div class="bg-faded py-5">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-12">
-            <div id="map"></div>
-        </div>
-      </div>
+     </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <div class="row">
+    <div class="col-lg-12">
+      <h3 class="page-header">Sample Pictures</h3>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+     <a href="#">
+      <img class="img-responsive portfolio-item" src="assets/images/LosAngeles2.jpg" width="500px" alt="Los Angeles">
+     </a>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+     <a href="#">
+      <img class="img-responsive portfolio-item" src="assets/images/Tromso.jpg" width="500px" alt="Tromso">
+     </a>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+     <a href="#">
+      <img class="img-responsive portfolio-item" src="assets/images/Newyorkpic.jpg" width="500px" alt="New York">
+     </a>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+     <a href="#">
+      <img class="img-responsive portfolio-item" src="assets/images/Geneva.jpg" width="500px" alt="Geneva">
+     </a>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+  
   <div class="container">
    <div class="row">
     <div class="col-md-12">
@@ -101,16 +114,11 @@
         </div>
       </div>
     </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 
-<!-- Scripts -->
-    <!-- Firebase only if we need it -->
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <!-- google maps script -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAlBkzOyC-pTIKuJSuvqls1eRlO7N7BEY&libraries=geometry,places&callback=initMap" async defer></script> 
-    <!-- flight route script -->
-    <script src="assets/javascript/route.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-  </body>
 </html>
