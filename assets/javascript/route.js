@@ -10,7 +10,7 @@
     var lengthOfArray = 0; 
 
     // Route colors
-    var StrokeColorArray = ['#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116','#FF0000','#800000','#FF5733','#935116'];
+    var StrokeColorArray = ['#FF0000','#8E44AD','#2980B9','#229954','#ECF0F1','#212F3D','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#ECF0F1','#212F3D','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#ECF0F1','#212F3D','#F1C40F','#EC7063','#808B96'];
     var StrokeAdd = 0; // can be removed
 
     var noOfClicks = 1;
@@ -44,11 +44,13 @@
         var tempptDes = (childSnapshot.val().city);
         var tempptLt = (childSnapshot.val().latitude);
         var tempptLg = (childSnapshot.val().longitude);
+       // var tempInfo = (childSnapshot.val().info);
 
         pointerId.push(temppointerId);
         ptDes.push(tempptDes);
         ptLt.push(tempptLt);
         ptLg.push(tempptLg);
+        //info.push(tempInto);
 
       },function (error) {
         console.log("Error: " + error.code);
@@ -96,13 +98,28 @@
       for(var j = 0; j < ptLt.length; j++ ) {  
         var latitu = {lat:  ptLt[j] , lng: ptLg[j]};
         var title = pointerId[j];
+        //var InfoWindowContent = info[j];
+       // var infoWindow = new google.maps.InfoWindow(), marker, j;
+
         var marker = new google.maps.Marker({
           position: latitu,
           map: map,
           title: title,
+          icon: {
+            url: "assets/images/test.png",
+            scaledSize: new google.maps.Size( 32, 32 )
+          },
           animation: google.maps.Animation.DROP 
         });
       }
+
+      // google.maps.event.addListener(marker, 'click', (function(marker, j) {
+      //   return function() {
+      //       infoWindow.setContent(InfoWindowContent);
+      //       infoWindow.open(map, marker);
+      //   }
+      // })(marker, j));
+
     }; 
 
 
@@ -127,12 +144,6 @@
               latRoutes.push(a);
               longRoutes.push(b);
               z.push(flight_id);
-
-           /*   routePointers.latitue.push();
-              routePointers.longitude.push();
-              routerPoitners.flightId.push();
-              routePoitners.clickedNumber.push();*/
-              
           };
           NoOfPoints.push(lengthOfArray);
           //return;
