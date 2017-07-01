@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Right seat or the left?</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Find your ideal window seat">
-    <meta name="keywords" content="">
-    <title>Right seat or the left?</title>     
+    <meta name="keywords" content="">  
     <!--Favicon-->
-    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon.ico"/>
-    <!--Cloudflare-->
+    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon1.ico"/>   
+    <!--ClodFlare-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <!--Reset css-->
+    <!--CSS Reset-->
     <link rel="stylesheet" href="assets/css/reset.css">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!--Map Route Style-->
+    <!--Bootstrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
+    <!--MapRoute-->
     <link rel="stylesheet" href="assets/css/maproute.css">
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <!--Style Sheet-->
+    <!--CSS Style-->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!--jQuery-->
+    <!--Google Maps-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--JQuery-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
@@ -28,93 +32,90 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
 
   </head>
-    <body class="text-center"> 
-
-      <img id=logo src="assets/images/trsotl2.gif">       
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-        </button>
-          <a class="navbar-brand" href="#">Right seat or the left?</a>
-      </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-            </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="photography.html">Photography tips</a></li>
-                <li><a href="view.html">View information</a></li>
-                <li><a href="view.html">About us</a></li>
-              </ul>
+  <body class="text-center"> 
+      <video width="2160" height="444" id="video" autoplay loop>
+        <source src="assets/video/rsol.mov">
+        <source src="assets/video/rsol.ogv">
+        <source src="assets/video/rsol.webm">
+      </video>
+      <!--NavBar-->     
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" href="#">Right seat or the left?</a>
           </div>
-      </div>
-  </nav>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="photography.html">Photography tips</a></li>
+                    <li><a href="view.html">View information</a></li>
+                    <li><a href="view.html">About us</a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
 
-    <div class="row">
-      <div class="col-md-12">
-        <form id ="myForm" onsubmit="return false;">
-            <p>Enter a flight ident to track: </p>
-            <input type="text" name="ident" id="ident_text" value="DL 675" />
-            <input type="submit" id="go_button" value="Search Depature and Destinations" />
-
-            <select id="OptionDestination"></select>
-            <select id="OptionDeparture"></select>
-            <input type="submit" id="submitdd" value="Submit" />
-            <button type="submit" id="getMarkers" value="getMarkers">Get Markers</button>  
-            <!--<button id="pushFB">FB</button>-->
-           
-        </form><br/><br/>
-      </div>
-    </div>
-
-    <div id="map"></div>
-    <div id="results"></div>
-
-    <div class="bg-faded py-5">
-    <div class="container">
-
+      <!--Search FLight-->
       <div class="row">
         <div class="col-md-12">
-            <div id="map"></div>
+          <form onsubmit="return false;">
+              <h5>Enter a flight ident to track: </h5>
+              <input type="text" name="ident" id="ident_text" value="DL 675" />
+              <input type="submit" id="go_button" value="Search Depature and Destinations" />
+              <select id="OptionDepature"></select>
+              <input type="submit" id="submitdd" value="Submit" />
+              <button type="reset" id="reset" value="reset">Reset</button>  
+          </form>
+          <br/>
+          <br/>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container">
-   <div class="row">
-    <div class="col-md-12">
-       <h2> Helpful links for your upcoming trip </h2>
-        <a href="http://www.tripadvisor.com"><img id="link" border="0" alt="Tripadvisor" src="assets/images/tripadvisor.png" width="auto" height="23"></a>
-        <a href="http://www.flightaware.com"><img id="link" border="0" alt="Flightaware" src="assets/images/flightaware.png" width="auto" height="55"></a>
-        <a href="http://www.rentalcars.com"><img id="link" border="0" alt="Rentalcars" src="assets/images/rentalcars.png" width="auto" height="20"></a>
-        <a href="http://www.trivago.com"><img id="link" border="0" alt="Trivago" src="assets/images/trivago.png" width="auto" height="28"></a>
-        <a href="http://www.priceline.com"><img id="link" border="0" alt="Priceline" src="assets/images/priceline.png" width="auto" height="23"></a>
-        <a href="http://www.accuweather.com"><img id="link" border="0" alt="Tripadvisor" src="assets/images/accuweather.png" width="auto" height="60"></a>
-      </div>
-     </div>
-    </div>
-  <div class="py-5 bg-info" id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 my-3">
-          <p>© Copyright 2017 https://dil2000.github.io/rsol - All rights reserved. </p>
+
+      <!--Google Map-->
+       <div id="map"></div>
+      <div id="results"></div>
+
+      <!--Links to external sites-->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2> Helpful links for your upcoming trip </h2>
+            <a href="http://www.tripadvisor.com"><img id="link" border="0" alt="Tripadvisor" src="assets/images/tripadvisor.png" width="auto" height="23"></a>
+            <a href="http://www.flightaware.com"><img id="link" border="0" alt="Flightaware" src="assets/images/flightaware.png" width="auto" height="55"></a>
+            <a href="http://www.rentalcars.com"><img id="link" border="0" alt="Rentalcars" src="assets/images/rentalcars.png" width="auto" height="20"></a>
+            <a href="http://www.trivago.com"><img id="link" border="0" alt="Trivago" src="assets/images/trivago.png" width="auto" height="28"></a>
+            <a href="http://www.priceline.com"><img id="link" border="0" alt="Priceline" src="assets/images/priceline.png" width="auto" height="23"></a>
+            <a href="http://www.accuweather.com"><img id="link" border="0" alt="Tripadvisor" src="assets/images/accuweather.png" width="auto" height="60"></a>
+          </div>
         </div>
       </div>
-    </div>
 
-<!-- Scripts -->
-    <!-- Firebase only if we need it -->
-   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <!-- google maps script -->
-    <script id="googleMaps" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAlBkzOyC-pTIKuJSuvqls1eRlO7N7BEY&libraries=geometry,places&callback=initMap" async defer></script> 
-    <!-- flight route script -->
-    <script src="assets/javascript/route.js"></script>
+      <!--Footer-->
+      <div class="py-5 bg-info" id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 my-3">
+              <p>© Copyright 2017 https://dil2000.github.io/rsol - All rights reserved. </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Scripts -->
+      <!-- Firebase only if we need it -->
+      <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+      <!-- google maps script -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAlBkzOyC-pTIKuJSuvqls1eRlO7N7BEY&libraries=geometry,places&callback=initMap" async defer></script> 
+      <!-- flight route script -->
+      <script src="assets/javascript/route.js"></script>
 
   </body>
 </html>
