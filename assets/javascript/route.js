@@ -1,19 +1,13 @@
-    // $(document).ready(function() {
+       // $(document).ready(function() {
 
     // Global variable
 
-    var z =[]; // Flight Id
     var LatLongArray = []; // Arrange flight path
 
     var pointerId =[]; var ptLt=[]; var ptLg=[]; var ptDes=[]; // Attractions
 
     var lengthOfArray = 0; 
-
-    // Route colors
-    var StrokeColorArray = ['#FF0000','#8E44AD','#2980B9','#229954','#ECF0F1','#212F3D','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#ECF0F1','#212F3D','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#ECF0F1','#212F3D','#F1C40F','#EC7063','#808B96'];
-    var StrokeAdd = 0; // can be removed
-
-    var noOfClicks = 1;
+   
     var latRoutes = []; // Latitues for the route
     var longRoutes = []; // Longitutes for the route
     var NoOfPoints =[0]; // No of points for each flight
@@ -65,32 +59,37 @@
 
     function initMap() {
 
-      // basic map settings
+      // Basic map settings
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5,
         center: {lat: 37.6334167, lng: -90.9594444},
         mapTypeId: 'terrain'
-      });
-
-      for (var i = 0 ; i < noOfClicks ; i++){ 
+      });      
+      // Route colors
+      var StrokeColorArray = ['#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96'];
+      var StrokeAdd = 0; 
+      // Find pointers for different routes
+      for(var i = 0 ; i < NoOfPoints.length ; i++){
         var LatLongArray = [];
-        var startPoint = NoOfPoints[i-1];
-        var endPoint = NoOfPoints[i] + NoOfPoints[i-1];
-        endPoint = startPoint + endPoint;
-        console.log("start : " + startPoint + "   End point : " + endPoint);
-        //console.log(startPoint + "  " + endPoint);
-        for (var j = startPoint; j < endPoint ; j++){ 
+        var total = 0;
+        var beforeTotal = 0;
+        for (var e = 1 ; e < (i +1); e++ ) {
+          total = total + NoOfPoints[e];
+          beforeTotal = total - NoOfPoints[e];
+        }
+        // Draw the route
+        for (var j = beforeTotal; j < total ; j++){ 
           LatLongArray.push({lat: latRoutes[j], lng: longRoutes[j]}); //Route   
           var flightPlanCoordinates = LatLongArray;  
           var flightPath = new google.maps.Polyline({   
-              path: flightPlanCoordinates,
-              geodesic: true,
-              strokeColor: StrokeColorArray[i],
-              strokeOpacity: 1.0,
-              strokeWeight: 2
-            });
-            flightPath.setMap(map);
-            StrokeAdd++;
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: StrokeColorArray[i],
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+          flightPath.setMap(map);
+          StrokeAdd++;
         }
       }
        
@@ -143,13 +142,11 @@
             var b = points[i].longitude;  
               latRoutes.push(a);
               longRoutes.push(b);
-              z.push(flight_id);
           };
           NoOfPoints.push(lengthOfArray);
           //return;
           initMap();
-          console.log(flight_id);
-         
+          console.log(flight_id);         
         },
         error: function(data, text) { console.log('Failed to decode route: ' + data); },
         dataType: 'jsonp',
@@ -182,7 +179,7 @@
               $("#OptionDepature").append(OptRoute);
             }              
           }                      
-          return;
+          //return;
           console.log('Did not find any useful flights');
         },
         error: function(data, text) { console.log('Failed to fetch flight: ' + data); },
@@ -197,6 +194,10 @@
     
     $('#go_button').on ("click", function() {
       // clearData();
+      /*if(!$(this).value.length()){
+        console.log("Null Value Enter another Value");
+        $(this).val() = "DL 675";
+      }*/
       ExtractDataFromFlightAware(); //find flight number
       $(this).attr( "disabled", true );
       $("#submitdd").attr({"disabled" :false , "value" : "Find Route"});
@@ -205,13 +206,12 @@
 
     $("#submitdd").on("click",function(){
       var selectedId = $("#OptionDepature").find('option:selected').attr('id');
+      //if((this).val()
       findFlightRoute(selectedId);
       $("#OptionDepature").find('option:selected').remove();
       $('#results').html("Flight Route Selected");
       $("#go_button").attr("disabled",true);
       $(this).attr('value', 'Another Route');    
-      //$("#OptionDepature").attr("disabled",true);  
-      noOfClicks++;
     });
 
     $("#reset").on("click",function(){
@@ -221,5 +221,3 @@
       $("#OptionDepature").attr("disabled",false);
     });
     
-
-    // });
