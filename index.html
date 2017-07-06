@@ -17,18 +17,20 @@
   <meta name="keywords" content=""> 
     <!--jQuery-->
 
-
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <!--Moments-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
-    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon.ico"/>
+    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon1.ico"/>
   </head>
-    <body class="text-center"> 
-
-      <img id=logo src="assets/images/trsotl2.gif">       
+  <body class="text-center"> 
+  <video width="2160" height="444" id="video" autoplay loop>
+  <source src="assets/video/rsol.mov">
+  <source src="assets/video/rsol.ogv">
+  <source src="assets/video/rsol.webm">
+  </video>
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -56,14 +58,15 @@
     <div class="row">
       <div class="col-md-12">
         <form onsubmit="return false;">
-            <p>Enter a flight ident to track: </p>
+            <h5>Enter a flight ident to track: </h5>
             <input type="text" name="ident" id="ident_text" value="DL 675" />
-            <input type="submit" id="go_button" value="Search Depature and Destinations" />
+            <input type="submit" class=button id="go_button" value="Search Depature and Destinations" />
 
-            <select id="OptionDestination"></select>
-            <select id="OptionDepature"></select>
-            <input type="submit" id="submitdd" value="Submit" />
-            <button type="reset" id="reset" value="reset">Reset</button>  
+            
+            <select id="OptionDepature" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button></select>
+            <input type="submit" class=button id="submitdd" value="Submit" />
+            <button type="reset" class=button id="reset" value="reset">Reset</button>  
         </form><br/><br/>
       </div>
     </div>
@@ -110,6 +113,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAlBkzOyC-pTIKuJSuvqls1eRlO7N7BEY&libraries=geometry,places&callback=initMap" async defer></script> 
     <!-- flight route script -->
     <script src="assets/javascript/route.js"></script>
-   
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   </body>
 </html>

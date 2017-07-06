@@ -1,9 +1,22 @@
-* {
+body, * {
 	font-family: 'Quicksand', sans-serif;
 }
 
 h3 {
 	margin-top: 0px;
+}
+
+
+h5 {
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-size: 20px;
+}
+
+
+#video {
+	width: 100%;
+	height: auto;
 }
 
 #link {
@@ -15,26 +28,35 @@ h3 {
 	margin-top: 15px;
 }
 
+
+.dropdown-toggle {
+	height: 25px;
+	background-color: #E7E7E7;
+	margin-bottom: 2px;
+}
+
+#reset {
+	margin-top: 20px;
+}
+
 #logo {
 	width: 100%;
 }
 
-.submitbutton {
-	background-color: #003975;
-	color: white;
-	border: 1px solid grey;
-	border-radius: 3px;
+.button {
+	border:none;
+	border-radius: 5px;
+	background-color: #E7E7E7;
+	margin-top: 20px;
 }
 
-.dropdownbutton {
-	background-color: #01B7F1;
-	border: 1px solid grey;
-	border-radius: 3px;
-
+#ident_text {
+	border-radius: 5px;
+	background-color: white;
 }
 
 #footer {
-	background-color: #E3E3E3;
+	background-color: #E7E7E7;
 	padding-top: 40px;
 	padding-bottom: 30px;
 }
@@ -51,6 +73,18 @@ h3 {
 	margin-bottom: 30px;
 }
 
+.lilogo {
+	width: 200px;
+    position: absolute;
+    top: 40px;
+    opacity: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.lilogo:hover {
+	opacity: .9;
+}
 .teampic {
 	width: 200px;
 	height: 200px;
@@ -58,14 +92,7 @@ h3 {
 	margin-top: 40px;
 }
 
-.teampic:hover {
-    background-image: url('assets/images/florian.jpg');
-}
 
-#map {
-	margin-left: 120px;
-	margin-right: 120px;
-}
 
 #mail {
 	margin-bottom: 50px;
@@ -116,14 +143,39 @@ z-index:100;
 .DivName {cursor: pointer}
 }
 
-
-@media (max-width: 575px) {}
-
-
-@media (min-width: 576px) and (max-width: 767px) {}
+.btn {
+	margin-top: 20px;
+}
 
 
-@media (min-width: 768px) and (max-width: 991px) {}
+
+
+@media (max-width: 575px) {
+	.jumbotron p {
+		margin-left: 10px;
+		margin-right: 10px;
+		font-size: 5px;
+	}
+
+}
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+	#jumbotron p {
+		margin-left: 10px;
+		margin-right: 10px;
+		font-size: 10px;
+	}
+  
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+	#jumbotron p {
+		margin-left: 10px;
+		margin-right: 10px;
+		font-size: 10px;
+}
 
 
 @media (min-width: 992px) and (max-width: 1199px) {
