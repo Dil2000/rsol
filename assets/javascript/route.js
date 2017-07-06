@@ -91,6 +91,7 @@
           flightPath.setMap(map);
           StrokeAdd++;
         }
+
       }
        
       // Adding pointers of attractions
