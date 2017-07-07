@@ -1,4 +1,3 @@
- // $(document).ready(function() {
 
     // Global variable
 
@@ -12,7 +11,9 @@
     var longRoutes = []; // Longitutes for the route
     var NoOfPoints =[0]; // No of points for each flight
 
-    /*var routePointers = {latitue : "", longitude : "",flightId : "",clickedNumber : ""}*/
+    // Route colors
+    var StrokeColorArray = ['#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96'];
+    var StrokeAdd = 0; 
 
     // Link to flightawre site
     var fxml_url = 'https://florianhutter:fee658c6ef8fe06991d9bb320eaa8b02597716de@flightxml.flightaware.com/json/FlightXML2/';
@@ -59,7 +60,7 @@
 
     function initMap() {
 
-      /**************************      Points      ***************************/
+      /**************************    Travis Points details      ***************************/
       var infoWindowContent = [
         // Capitol Building
         ["<div style='font-family: quicksand'>" + 
@@ -352,15 +353,13 @@
       ];
 
       /***********************************************************************/
+      
       // Basic map settings
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5,
         center: {lat: 37.6334167, lng: -90.9594444},
         mapTypeId: 'terrain'
       });      
-      // Route colors
-      var StrokeColorArray = ['#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96','#FF0000','#8E44AD','#2980B9','#229954','#826080','#183756','#F1C40F','#EC7063','#808B96'];
-      var StrokeAdd = 0; 
       // Find pointers for different routes
       for(var i = 0 ; i < NoOfPoints.length ; i++){
         var LatLongArray = [];
@@ -382,20 +381,15 @@
             strokeWeight: 2
           });
           flightPath.setMap(map);
-          StrokeAdd++;
+          //StrokeAdd++;
         }
 
       }
 
-      // Travis Link
-      var infoWindow = new google.maps.InfoWindow(), marker, j;
-       
       // Adding pointers of attractions
       for(var j = 0; j < ptLt.length; j++ ) {  
         var latitu = {lat:  ptLt[j] , lng: ptLg[j]};
         var title = pointerId[j];
-        //var InfoWindowContent = info[j];
-       // var infoWindow = new google.maps.InfoWindow(), marker, j;
 
         var marker = new google.maps.Marker({
           position: latitu,
@@ -407,24 +401,18 @@
           },
           animation: google.maps.Animation.DROP 
         });
+       
+        // Travis Link
+        var infoWindow = new google.maps.InfoWindow(), marker, j;
 
-        //Travis
-         // Add info window to marker    
+        // Travis - Add info window to marker    
         google.maps.event.addListener(marker, 'click', (function(marker, j) {
-            return function() {
-                infoWindow.setContent(infoWindowContent[j][0]);
-                infoWindow.open(map, marker);
-            }
+          return function() {
+              infoWindow.setContent(infoWindowContent[j][0]);
+              infoWindow.open(map, marker);
+          }
         })(marker, j));  
       }
-
-      // google.maps.event.addListener(marker, 'click', (function(marker, j) {
-      //   return function() {
-      //       infoWindow.setContent(InfoWindowContent);
-      //       infoWindow.open(map, marker);
-      //   }
-      // })(marker, j));
-
     }; 
 
 
@@ -499,11 +487,6 @@
     /******* Click Events ***********************************************/ 
     
     $('#go_button').on ("click", function() {
-      // clearData();
-      /*if(!$(this).value.length()){
-        console.log("Null Value Enter another Value");
-        $(this).val() = "DL 675";
-      }*/
       ExtractDataFromFlightAware(); //find flight number
       $(this).attr( "disabled", true );
       $("#submitdd").attr({"disabled" :false , "value" : "Find Route"});
@@ -512,10 +495,15 @@
 
     $("#submitdd").on("click",function(){
       var selectedId = $("#OptionDepature").find('option:selected').attr('id');
-      //if((this).val()
-      findFlightRoute(selectedId);
-      $("#OptionDepature").find('option:selected').remove();
-      $('#results').html("Flight Route Selected");
+      findFlightRoute(selectedId); //find flight route
+      var RouteText = $("#OptionDepature option:selected").text();
+      StrokeAdd++;
+      var newDiv = $("<div>");
+      newDiv.css("color",StrokeColorArray[StrokeAdd]);
+      newDiv.text(RouteText);
+      newDiv.append("<br/>");
+      $("#results").prepend(newDiv);
+      $("#OptionDepature").find('option:selected').remove();      
       $("#go_button").attr("disabled",true);
       $(this).attr('value', 'Another Route');    
     });
