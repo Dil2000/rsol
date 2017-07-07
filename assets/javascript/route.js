@@ -337,7 +337,7 @@
         //Mt Elbert
         ["<div style='font-family: quicksand'>" + 
           "<h3>Mount Elbert</h3>"+
-          "<img src='assets/images/mt_elbert.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+          "<img src='assets/images/mount_elbert.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
           "<br>"+
           "<p>Highest summit in the Rocky Mountains.</p>" +
           "</div>" 
