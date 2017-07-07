@@ -168,7 +168,7 @@
          // Yellowstone National Park
         ["<div style='font-family: quicksand'>" + 
           "<h3>Yellowstone National Park</h3>" +
-          "<img src='assets/images/yellow_national_park.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+          "<img src='assets/images/yellow_stone_national_park.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
           "<br>"+
           "<p>The country's first national park andnce you visit you'll know why it was the first to be chosen</p>" +
           "</div>" 
