@@ -311,8 +311,8 @@
         ], 
         //Four Corners Monument
         ["<div style='font-family: quicksand'>" + 
-          "<h3>Hollywood Sign</h3>"+
-          "<img src='assets/images/hollywood.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
+          "<h3>Four Corner's Monument</h3>"+
+          "<img src='assets/images/four_corners_monument.jpg' style='height: 75px; width: 75px; border-radius: 50%;'>" +
           "<br>"+
           "<p>Arizona, Colorado, New Mexico, and Utah come together at this one spot.</p>" +
           "</div>" 
