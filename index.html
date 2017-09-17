@@ -6,24 +6,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+
   <link rel="stylesheet" href="assets/css/maproute.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-  <title>Right seat or the left?</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>The right seat on the left</title>
+
   <meta name="description" content="Find your ideal window seat">
   <meta name="keywords" content=""> 
     <!--jQuery-->
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <!--Moments-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
-    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon.ico"/>
+    <link rel="shortcut icon" type="/x-icon" href="assets/images/favicon1.ico"/>
   </head>
-    <body class="text-center"> 
-
-      <img id=logo src="assets/images/trsotl2.gif">       
-  <nav class="navbar navbar-default">
+  <body class="text-center"> 
+  <video width="2160" height="444" id="video" autoplay loop>
+  <source src="assets/video/rsol.mov">
+  <source src="assets/video/rsol.ogv">
+  <source src="assets/video/rsol.webm">
+  </video>
+  <nav class="navbar navbar-default" style="margin-top: -5px">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -50,14 +58,15 @@
     <div class="row">
       <div class="col-md-12">
         <form onsubmit="return false;">
-            <p>Enter a flight ident to track: </p>
+            <h5>Enter a flight ident to track: </h5>
             <input type="text" name="ident" id="ident_text" value="DL 675" />
-            <input type="submit" id="go_button" value="Search Depature and Destinations" />
+            <input type="submit" class=button id="go_button" value="Search Depature and Destinations" />
 
-            <select id="OptionDestination"></select>
-            <select id="OptionDepature"></select>
-            <input type="submit" id="submitdd" value="Submit" />
-            <button type="reset" id="reset" value="reset">Reset</button>  
+            
+            <select id="OptionDepature" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button></select>
+            <input type="submit" class=button id="submitdd" value="Submit" />
+            <button type="reset" class=button id="reset" value="reset">Reset</button>  
         </form><br/><br/>
       </div>
     </div>
@@ -105,6 +114,7 @@
     <!-- flight route script -->
     <script src="assets/javascript/route.js"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   </body>
 </html>
